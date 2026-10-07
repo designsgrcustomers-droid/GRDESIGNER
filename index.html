@@ -1,796 +1,429 @@
-```html
 <!DOCTYPE html>
 <html lang="en" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GR Designs — Graphic Design & Brand Identity</title>
-    <!-- Favicon using extracted butterfly asset -->
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png">
-    
-    <!-- Google Fonts: Inter for sharp typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fafafa',
-                            100: '#f5f5f5',
-                            800: '#262626',
-                            900: '#171717',
-                            violet: '#7c3aed'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GR | Graphic Design & Visual Identity</title>
 
-    <style>
-        /* Custom subtle scrollbar and transition rules */
-        html {
-            scroll-behavior: smooth;
+  <!-- Favicon using transparent logo -->
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brandPurple: '#6b4cff',
+            brandGlow: '#8b5cf6',
+            brandDark: '#0f172a',
+            brandLight: '#f8fafc'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .modal-blur {
-            backdrop-filter: blur(4px);
-        }
-        /* Crisp image handling */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .modal-backdrop {
+      background-color: rgba(15, 23, 42, 0.75);
+    }
+  </style>
 </head>
-<body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen flex flex-col antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-zinc-100 dark:selection:text-zinc-900">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col">
 
-    <!-- TOP NAVIGATION HEADER -->
-    <header class="sticky top-0 z-30 bg-white/95 dark:bg-zinc-950/95 border-b border-zinc-200 dark:border-zinc-800 transition-colors">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            
-            <!-- Left: Side Menu Trigger & Brand Logo -->
-            <div class="flex items-center space-x-3">
-                <button id="menu-toggle" aria-label="Open menu" class="p-2 -ml-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-700 dark:text-zinc-300 focus:outline-none focus:ring-2 focus:ring-zinc-400">
-                    <i data-lucide="menu" class="w-5 h-5"></i>
-                </button>
-                <a href="#hero" class="flex items-center space-x-2.5 group">
-                    <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="GR Designs Icon" class="h-8 w-auto object-contain transition-transform group-hover:scale-105">
-                    <span class="font-semibold text-lg tracking-tight border-l border-zinc-300 dark:border-zinc-700 pl-2.5">GR Designs</span>
-                </a>
-            </div>
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      
+      <!-- Left: Drawer Toggle & Brand -->
+      <div class="flex items-center gap-3">
+        <button id="menuToggleBtn" aria-label="Open Navigation" class="p-2 text-slate-600 dark:text-slate-300 hover:text-brandPurple hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
 
-            <!-- Desktop Quick Nav Links -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                <a href="#services" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">What I Do</a>
-                <a href="#portfolio" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Portfolio</a>
-                <a href="#about" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">About</a>
-                <a href="#contact" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Contact</a>
-            </nav>
+        <a href="#home" class="flex items-center gap-2">
+          <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="GR Logo" class="h-8 w-auto" />
+          <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">GR Designs</span>
+        </a>
+      </div>
 
-            <!-- Right: Theme Switcher Selector Dropdown -->
-            <div class="flex items-center space-x-3">
-                <div class="relative">
-                    <button id="theme-dropdown-btn" class="flex items-center space-x-1.5 px-2.5 py-1.5 text-xs font-medium border border-zinc-300 dark:border-zinc-700 rounded hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors focus:outline-none">
-                        <i id="theme-current-icon" data-lucide="sun" class="w-3.5 h-3.5"></i>
-                        <span id="theme-current-text" class="capitalize">Light</span>
-                        <i data-lucide="chevron-down" class="w-3 h-3 text-zinc-400"></i>
-                    </button>
-                    <!-- Dropdown Options -->
-                    <div id="theme-menu" class="hidden absolute right-0 mt-1 w-32 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded shadow-md py-1 z-50 text-xs">
-                        <button onclick="setThemeMode('light')" class="w-full text-left px-3 py-1.5 flex items-center space-x-2 hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                            <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-500"></i>
-                            <span>Light</span>
-                        </button>
-                        <button onclick="setThemeMode('dark')" class="w-full text-left px-3 py-1.5 flex items-center space-x-2 hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                            <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-400"></i>
-                            <span>Dark</span>
-                        </button>
-                        <button onclick="setThemeMode('system')" class="w-full text-left px-3 py-1.5 flex items-center space-x-2 hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                            <i data-lucide="monitor" class="w-3.5 h-3.5 text-zinc-500"></i>
-                            <span>System</span>
-                        </button>
-                    </div>
-                </div>
-
-                <a href="#contact" class="hidden sm:inline-flex items-center px-3 py-1.5 text-xs font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 rounded transition-colors">
-                    Get in Touch
-                </a>
-            </div>
-
-        </div>
-    </header>
-
-    <!-- SLIDE-OUT LEFT DRAWER OVERLAY -->
-    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-200"></div>
-
-    <!-- SLIDE-OUT LEFT DRAWER PANEL -->
-    <aside id="drawer-panel" class="fixed top-0 left-0 h-full w-72 max-w-[80vw] bg-white dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-800 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
-        <div>
-            <!-- Drawer Header -->
-            <div class="h-16 px-5 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="GR Designs Logo" class="h-6 w-auto">
-                    <span class="font-semibold text-sm tracking-tight">Navigation</span>
-                </div>
-                <button id="drawer-close" class="p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <!-- Drawer Navigation Links -->
-            <nav class="p-4 space-y-1">
-                <a href="#hero" class="drawer-link flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <i data-lucide="home" class="w-4 h-4 text-zinc-500"></i>
-                    <span>Home / Main</span>
-                </a>
-                <a href="#services" class="drawer-link flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <i data-lucide="layout-grid" class="w-4 h-4 text-zinc-500"></i>
-                    <span>What I Do</span>
-                </a>
-                <a href="#portfolio" class="drawer-link flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <i data-lucide="folder-git-2" class="w-4 h-4 text-zinc-500"></i>
-                    <span>Portfolio Works</span>
-                </a>
-                <a href="#about" class="drawer-link flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <i data-lucide="user" class="w-4 h-4 text-zinc-500"></i>
-                    <span>About Info</span>
-                </a>
-                <a href="https://www.upwork.com" target="_blank" rel="noopener" class="drawer-link flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                    <span>Upwork Profile</span>
-                </a>
-                <a href="#contact" class="drawer-link flex items-center space-x-3 px-3 py-2.5 rounded text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    <i data-lucide="mail" class="w-4 h-4 text-zinc-500"></i>
-                    <span>Contact Me</span>
-                </a>
-            </nav>
+      <!-- Right: Theme Switcher & Upwork Button -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Select Dropdown -->
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-sun text-slate-500 dark:text-slate-400 text-xs absolute left-2.5 pointer-events-none"></i>
+          <select id="themeSelect" aria-label="Select Theme Mode" class="pl-7 pr-3 py-1.5 text-xs font-medium rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-brandPurple">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="system">System</option>
+          </select>
         </div>
 
-        <!-- Drawer Footer Info -->
-        <div class="p-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500">
-            <p class="font-medium text-zinc-700 dark:text-zinc-300 mb-1">GR Designs</p>
-            <p>Graphic Design & Identity Systems</p>
-            <p class="mt-2 text-[11px] text-zinc-400">Clean. Purposeful. Authentic.</p>
+        <a href="https://www.upwork.com/freelancers/~013a01c9b21c20f5fe" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-md transition-colors">
+          <i class="fa-solid fa-briefcase"></i> Upwork
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Slide-out Left Drawer -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-200"></div>
+  <aside id="drawer" class="fixed top-0 left-0 h-full w-72 bg-white dark:bg-slate-900 z-50 transform -translate-x-full transition-transform duration-200 border-r border-slate-200 dark:border-slate-800 flex flex-col justify-between p-6">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="GR Logo" class="h-7 w-auto" />
+          <span class="font-bold text-slate-900 dark:text-white">GR Designs</span>
         </div>
-    </aside>
+        <button id="closeDrawerBtn" aria-label="Close Navigation" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
 
-    <main class="flex-grow">
-        <!-- HERO SECTION -->
-        <section id="hero" class="border-b border-zinc-200 dark:border-zinc-800 py-12 md:py-20 bg-zinc-50/50 dark:bg-zinc-950">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                    
-                    <!-- Hero Content Left -->
-                    <div class="md:col-span-7 space-y-6">
-                        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs text-zinc-600 dark:text-zinc-400">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span>Available for new design projects</span>
-                        </div>
-                        
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white leading-tight">
-                            Identity and Graphic Design, Built with Clarity.
-                        </h1>
-
-                        <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-xl font-normal leading-relaxed">
-                            I create clean visual identities, logo marks, brand guides, and custom marketing materials. Direct communication, honest turnaround times, and purposeful design.
-                        </p>
-
-                        <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-3 pt-2">
-                            <a href="#portfolio" class="px-4 py-2.5 text-sm font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 rounded transition-colors inline-flex items-center space-x-2">
-                                <span>Explore Recent Work</span>
-                                <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                            </a>
-                            <a href="https://www.upwork.com" target="_blank" rel="noopener" class="px-4 py-2.5 text-sm font-medium border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded transition-colors inline-flex items-center space-x-2 text-zinc-800 dark:text-zinc-200">
-                                <i data-lucide="briefcase" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
-                                <span>Hire via Upwork</span>
-                            </a>
-                        </div>
-
-                        <!-- Key Metrics/Attributes line -->
-                        <div class="pt-6 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-3 gap-4 text-xs text-zinc-500">
-                            <div>
-                                <span class="block font-semibold text-zinc-900 dark:text-zinc-200 text-sm">100% Custom</span>
-                                <span>No generic templates</span>
-                            </div>
-                            <div>
-                                <span class="block font-semibold text-zinc-900 dark:text-zinc-200 text-sm">Fast Turnaround</span>
-                                <span>Direct updates</span>
-                            </div>
-                            <div>
-                                <span class="block font-semibold text-zinc-900 dark:text-zinc-200 text-sm">Print & Digital</span>
-                                <span>Production-ready files</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hero Banner Right: Banner Logo Display -->
-                    <div class="md:col-span-5 flex justify-center">
-                        <div class="p-2 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded shadow-sm w-full max-w-md">
-                            <img src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" alt="GR Designs Brand Showcase" class="w-full h-auto object-cover rounded border border-zinc-100 dark:border-zinc-800">
-                            <div class="p-3 text-center">
-                                <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400">GR Designs Branding Concept & Mark</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT I DO / SERVICES SECTION -->
-        <section id="services" class="py-16 border-b border-zinc-200 dark:border-zinc-800">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                
-                <div class="max-w-2xl mb-12">
-                    <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-2">Capabilities</h2>
-                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                        Design services tailored to real business needs
-                    </h3>
-                    <p class="text-zinc-600 dark:text-zinc-400 mt-2 text-sm">
-                        Whether starting from scratch or refining existing assets, I deliver clean, consistent design work ready for publication.
-                    </p>
-                </div>
-
-                <!-- Service Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    
-                    <!-- Card 1 -->
-                    <div class="p-5 border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors">
-                        <div class="w-10 h-10 border border-zinc-200 dark:border-zinc-800 rounded flex items-center justify-center mb-4 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-                            <i data-lucide="pen-tool" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="font-semibold text-base mb-2">Custom Logo Design</h4>
-                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                            Distinct, functional logo marks designed to scale smoothly across screens, print materials, and merchandise.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="p-5 border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors">
-                        <div class="w-10 h-10 border border-zinc-200 dark:border-zinc-800 rounded flex items-center justify-center mb-4 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-                            <i data-lucide="layers" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="font-semibold text-base mb-2">Visual Identity Systems</h4>
-                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                            Cohesive brand kits including typography palettes, color tokens, visual guidelines, and practical usage rules.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="p-5 border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors">
-                        <div class="w-10 h-10 border border-zinc-200 dark:border-zinc-800 rounded flex items-center justify-center mb-4 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-                            <i data-lucide="layout" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="font-semibold text-base mb-2">Canva & Social Kits</h4>
-                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                            Editable Canva templates, social media banners, and carousel graphics your team can easily update independently.
-                        </p>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="p-5 border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors">
-                        <div class="w-10 h-10 border border-zinc-200 dark:border-zinc-800 rounded flex items-center justify-center mb-4 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
-                            <i data-lucide="file-text" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="font-semibold text-base mb-2">Graphic & Print Assets</h4>
-                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                            Business cards, flyers, packaging labels, and digital promotional collateral crafted with crisp print specs.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- PORTFOLIO SECTION -->
-        <section id="portfolio" class="py-16 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                    <div>
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-2">Selected Works</h2>
-                        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Recent Projects</h3>
-                    </div>
-
-                    <!-- Category Filters -->
-                    <div class="flex flex-wrap gap-1.5 text-xs font-medium" id="portfolio-filters">
-                        <button onclick="filterPortfolio('all')" class="filter-btn active px-3 py-1.5 rounded border border-zinc-900 bg-zinc-900 text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 transition-colors" data-filter="all">All</button>
-                        <button onclick="filterPortfolio('branding')" class="filter-btn px-3 py-1.5 rounded border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors" data-filter="branding">Branding</button>
-                        <button onclick="filterPortfolio('logo')" class="filter-btn px-3 py-1.5 rounded border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors" data-filter="logo">Logos</button>
-                        <button onclick="filterPortfolio('canva')" class="filter-btn px-3 py-1.5 rounded border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors" data-filter="canva">Templates</button>
-                    </div>
-                </div>
-
-                <!-- Portfolio Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
-                    
-                    <!-- Item 1 -->
-                    <div class="portfolio-card group border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="branding" onclick="openModal('GR Designs Brand Suite', 'Full corporate brand guide including typography, iconology, and dark/light color palettes.', 'https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png', 'Branding & Identity')">
-                        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
-                            <img src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" alt="GR Designs Suite" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="bg-white/90 dark:bg-zinc-900/90 text-xs px-3 py-1.5 rounded font-medium shadow-sm">View Details</span>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Branding & Identity</span>
-                            <h4 class="font-semibold text-base mt-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">GR Designs Brand Suite</h4>
-                            <p class="text-xs text-zinc-500 mt-1 line-clamp-2">Complete visual identity system and presentation collateral.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="portfolio-card group border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="logo" onclick="openModal('Monogram Butterfly Mark', 'Minimalist butterfly mark crafted with precise geometric vector lines.', 'https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png', 'Logo Design')">
-                        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-800 p-8 flex items-center justify-center relative overflow-hidden">
-                            <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="Butterfly Mark" class="max-h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="bg-white/90 dark:bg-zinc-900/90 text-xs px-3 py-1.5 rounded font-medium shadow-sm">View Details</span>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Logo Design</span>
-                            <h4 class="font-semibold text-base mt-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">Vector Butterfly Iconography</h4>
-                            <p class="text-xs text-zinc-500 mt-1 line-clamp-2">Isolated brand mark engineered for high clarity across small sizes.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="portfolio-card group border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="canva" onclick="openModal('Social Media Template Deck', 'Set of 12 fully customizable social templates built for fast editing in Canva.', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80', 'Canva Templates')">
-                        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Social Templates" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="bg-white/90 dark:bg-zinc-900/90 text-xs px-3 py-1.5 rounded font-medium shadow-sm">View Details</span>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Canva Templates</span>
-                            <h4 class="font-semibold text-base mt-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">Editorial Social Assets</h4>
-                            <p class="text-xs text-zinc-500 mt-1 line-clamp-2">Reusable layout templates tailored for minimal brand aesthetics.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="portfolio-card group border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="branding" onclick="openModal('Minimal Stationery Set', 'Clean print stationery layout including letterhead and card design.', 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80', 'Print & Graphic Design')">
-                        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80" alt="Stationery Set" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="bg-white/90 dark:bg-zinc-900/90 text-xs px-3 py-1.5 rounded font-medium shadow-sm">View Details</span>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Print & Graphic Design</span>
-                            <h4 class="font-semibold text-base mt-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">Tactile Brand Stationery</h4>
-                            <p class="text-xs text-zinc-500 mt-1 line-clamp-2">Refined stationery layouts designed for high-end paper stocks.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div class="portfolio-card group border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="logo" onclick="openModal('Geometric Apparel Mark', 'Clean icon badge design engineered for embroidery and screenprinting.', 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80', 'Logo Design')">
-                        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" alt="Apparel Mark" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="bg-white/90 dark:bg-zinc-900/90 text-xs px-3 py-1.5 rounded font-medium shadow-sm">View Details</span>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Logo Design</span>
-                            <h4 class="font-semibold text-base mt-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">Geometric Apparel Mark</h4>
-                            <p class="text-xs text-zinc-500 mt-1 line-clamp-2">Crisp vector emblem for modern physical apparel lines.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 6 -->
-                    <div class="portfolio-card group border border-zinc-200 dark:border-zinc-800 rounded bg-white dark:bg-zinc-900 overflow-hidden cursor-pointer" data-category="canva" onclick="openModal('Marketing Presentation Pitch', 'Professional presentation slide framework designed in Canva for client decks.', 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80', 'Canva Templates')">
-                        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Presentation Deck" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="bg-white/90 dark:bg-zinc-900/90 text-xs px-3 py-1.5 rounded font-medium shadow-sm">View Details</span>
-                            </div>
-                        </div>
-                        <div class="p-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Canva Templates</span>
-                            <h4 class="font-semibold text-base mt-1 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">Client Pitch Slide Deck</h4>
-                            <p class="text-xs text-zinc-500 mt-1 line-clamp-2">Clean slide layouts structured for clear business storytelling.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT SECTION -->
-        <section id="about" class="py-16 border-b border-zinc-200 dark:border-zinc-800">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-                    
-                    <div class="md:col-span-5 flex justify-center">
-                        <div class="p-6 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded shadow-sm w-full">
-                            <div class="flex items-center space-x-3 pb-4 border-b border-zinc-100 dark:border-zinc-800">
-                                <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="GR Logo" class="h-10 w-auto">
-                                <div>
-                                    <h4 class="font-bold text-sm">GR Designs</h4>
-                                    <p class="text-xs text-zinc-500">Graphic Designer & Brand Specialist</p>
-                                </div>
-                            </div>
-                            <div class="pt-4 space-y-3 text-xs text-zinc-600 dark:text-zinc-400">
-                                <div class="flex justify-between py-1 border-b border-zinc-100 dark:border-zinc-800/50">
-                                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Focus Areas</span>
-                                    <span>Brand Marks & Identity</span>
-                                </div>
-                                <div class="flex justify-between py-1 border-b border-zinc-100 dark:border-zinc-800/50">
-                                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Preferred Platform</span>
-                                    <span>Upwork (Top Rated)</span>
-                                </div>
-                                <div class="flex justify-between py-1 border-b border-zinc-100 dark:border-zinc-800/50">
-                                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Communication</span>
-                                    <span>Direct & Responsive</span>
-                                </div>
-                                <div class="flex justify-between py-1">
-                                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Deliverables</span>
-                                    <span>Vector SVG, EPS, AI, PNG, Canva</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="md:col-span-7 space-y-4">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500">About My Approach</h2>
-                        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                            No visual fluff. Just thoughtful, intentional design.
-                        </h3>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                            Hello! I am the designer behind GR Designs. I partner with founders, businesses, and agency teams to build sharp, functional visual identity systems. I prioritize clarity over trendiness, ensuring your design works across every medium.
-                        </p>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                            When working together, you get direct communication without account managers in the middle. Deliverables are delivered cleanly, properly layered, and ready for production or developer handover.
-                        </p>
-
-                        <!-- Upwork Integration Box -->
-                        <div class="p-4 border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/50 dark:bg-emerald-950/20 rounded mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                            <div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="font-semibold text-sm text-zinc-900 dark:text-zinc-100">Looking for safe escrow payments?</span>
-                                </div>
-                                <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">I regularly collaborate with clients directly on Upwork with contract protection.</p>
-                            </div>
-                            <a href="https://www.upwork.com" target="_blank" rel="noopener" class="px-3.5 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded transition-colors whitespace-nowrap inline-flex items-center space-x-1.5">
-                                <span>Visit Upwork Profile</span>
-                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="py-16 bg-zinc-50/50 dark:bg-zinc-950">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6">
-                
-                <div class="text-center max-w-xl mx-auto mb-10">
-                    <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-500 mb-2">Get In Touch</h2>
-                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Start Your Design Project</h3>
-                    <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-2">
-                        Send me a brief outline of your project requirements and target timeline. I usually respond within 24 hours.
-                    </p>
-                </div>
-
-                <!-- Contact Form Card -->
-                <div class="p-6 sm:p-8 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded shadow-sm">
-                    
-                    <!-- Alert Notification Box (Hidden by default) -->
-                    <div id="contact-alert" class="hidden mb-6 p-4 rounded border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 text-xs flex items-start space-x-3">
-                        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
-                        <div>
-                            <p class="font-semibold">Message Sent Successfully</p>
-                            <p class="mt-0.5">Thank you for reaching out to GR Designs. I will review your message and respond shortly.</p>
-                        </div>
-                    </div>
-
-                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label for="name" class="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">Your Name *</label>
-                                <input type="text" id="name" required placeholder="Jane Doe" class="w-full px-3 py-2 text-sm border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400 transition-colors">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">Your Email *</label>
-                                <input type="email" id="email" required placeholder="jane@example.com" class="w-full px-3 py-2 text-sm border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400 transition-colors">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="service-type" class="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">Service Required</label>
-                            <select id="service-type" class="w-full px-3 py-2 text-sm border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400 transition-colors">
-                                <option value="logo">Custom Logo Design</option>
-                                <option value="branding">Visual Identity Package</option>
-                                <option value="canva">Canva Social Media Templates</option>
-                                <option value="other">Graphic & Print Assets / Other</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="message" class="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">Project Details *</label>
-                            <textarea id="message" rows="4" required placeholder="Describe your business, goals, deliverables needed, and any deadlines..." class="w-full px-3 py-2 text-sm border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400 transition-colors"></textarea>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-2">
-                            <span class="text-[11px] text-zinc-500">* Required fields</span>
-                            <button type="submit" id="submit-btn" class="px-5 py-2.5 text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 rounded transition-colors inline-flex items-center space-x-2">
-                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                                <span>Send Message</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-zinc-200 dark:border-zinc-800 py-8 bg-white dark:bg-zinc-950 text-xs text-zinc-500">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            
-            <div class="flex items-center space-x-2">
-                <img src="https://i.postimg.cc/Jh96md9r/21432-removebg-preview.png" alt="GR Designs Logo" class="h-5 w-auto">
-                <span class="font-semibold text-zinc-700 dark:text-zinc-300">GR Designs</span>
-                <span>— All Rights Reserved &copy; 2026</span>
-            </div>
-
-            <div class="flex items-center space-x-6">
-                <a href="#services" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Services</a>
-                <a href="#portfolio" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Portfolio</a>
-                <a href="https://www.upwork.com" target="_blank" rel="noopener" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center space-x-1">
-                    <span>Upwork</span>
-                    <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-                <a href="#contact" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Contact</a>
-            </div>
-
-        </div>
-    </footer>
-
-    <!-- IMAGE PREVIEW MODAL -->
-    <div id="image-modal" class="fixed inset-0 z-50 hidden modal-blur bg-black/60 flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded max-w-2xl w-full overflow-hidden shadow-xl transform transition-all">
-            
-            <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <div>
-                    <span id="modal-category" class="text-[10px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Category</span>
-                    <h3 id="modal-title" class="text-base font-bold text-zinc-900 dark:text-zinc-100">Project Title</h3>
-                </div>
-                <button onclick="closeModal()" class="p-1 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <div class="p-4 bg-zinc-100 dark:bg-zinc-950 flex items-center justify-center max-h-[60vh] overflow-hidden">
-                <img id="modal-image" src="" alt="Preview image" class="max-h-[55vh] w-auto object-contain rounded border border-zinc-200 dark:border-zinc-800">
-            </div>
-
-            <div class="p-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <p id="modal-desc" class="text-xs text-zinc-600 dark:text-zinc-400">Project details explanation.</p>
-                <button onclick="closeModal()" class="px-3 py-1.5 text-xs font-medium border border-zinc-300 dark:border-zinc-700 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                    Close Preview
-                </button>
-            </div>
-
-        </div>
+      <nav class="mt-6 space-y-1">
+        <a href="#home" class="drawer-link flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-house w-4 text-brandPurple"></i> Home
+        </a>
+        <a href="#services" class="drawer-link flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-layer-group w-4 text-brandPurple"></i> Services
+        </a>
+        <a href="#portfolio" class="drawer-link flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-border-all w-4 text-brandPurple"></i> Portfolio
+        </a>
+        <a href="#about" class="drawer-link flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-user w-4 text-brandPurple"></i> About Me
+        </a>
+        <a href="https://www.upwork.com/freelancers/~013a01c9b21c20f5fe" target="_blank" rel="noopener noreferrer" class="drawer-link flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition-colors">
+          <span class="flex items-center gap-3"><i class="fa-solid fa-briefcase w-4"></i> Upwork Profile</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+        <a href="#contact" class="drawer-link flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-envelope w-4 text-brandPurple"></i> Contact
+        </a>
+      </nav>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+      <p>&copy; 2026 GR Designs</p>
+    </div>
+  </aside>
 
-        /* --- THEME SWITCHER LOGIC (System / Light / Dark) --- */
-        let currentTheme = localStorage.getItem('gr_theme') || 'system';
+  <main class="flex-grow">
+    
+    <!-- Hero Section -->
+    <section id="home" class="py-12 md:py-20 px-4 max-w-5xl mx-auto text-center">
+      <div class="inline-block mb-6">
+        <img src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" alt="GR Designs Banner" class="w-full max-w-xl mx-auto rounded-lg shadow-sm border border-slate-200 dark:border-slate-800" />
+      </div>
 
-        function applyTheme(theme) {
-            const htmlEl = document.documentElement;
-            const iconEl = document.getElementById('theme-current-icon');
-            const textEl = document.getElementById('theme-current-text');
+      <h1 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+        Custom Logos &amp; Visual Identity Solutions
+      </h1>
+      
+      <p class="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        I build professional identities for projects, businesses, and communities. From custom logos to brand assets, I deliver clean, impactful design work with fast turnaround.
+      </p>
 
-            let isDark = false;
-            if (theme === 'dark') {
-                isDark = true;
-            } else if (theme === 'light') {
-                isDark = false;
-            } else {
-                // System default check
-                isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            }
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="#contact" class="px-5 py-2.5 text-sm font-medium text-white bg-brandPurple hover:bg-brandGlow rounded-md transition-colors shadow-sm">
+          Start a Project
+        </a>
+        <a href="https://www.upwork.com/freelancers/~013a01c9b21c20f5fe" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors">
+          View Upwork Profile
+        </a>
+      </div>
+    </section>
 
-            if (isDark) {
-                htmlEl.classList.add('dark');
-                htmlEl.classList.remove('light');
-            } else {
-                htmlEl.classList.remove('dark');
-                htmlEl.classList.add('light');
-            }
+    <!-- Services Section -->
+    <section id="services" class="py-12 px-4 max-w-5xl mx-auto border-t border-slate-200 dark:border-slate-800">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Services</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Core design deliverables for your brand.</p>
+      </div>
 
-            // Update Header Icon & Label
-            if (theme === 'light') {
-                iconEl.setAttribute('data-lucide', 'sun');
-                textEl.textContent = 'Light';
-            } else if (theme === 'dark') {
-                iconEl.setAttribute('data-lucide', 'moon');
-                textEl.textContent = 'Dark';
-            } else {
-                iconEl.setAttribute('data-lucide', 'monitor');
-                textEl.textContent = 'System';
-            }
-            lucide.createIcons();
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+          <div class="w-9 h-9 flex items-center justify-center rounded bg-brandPurple/10 text-brandPurple mb-4">
+            <i class="fa-solid fa-pen-nib text-sm"></i>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Custom Logo Design</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Distinctive vector logos created from scratch to represent your brand's purpose cleanly across digital and print mediums.</p>
+        </div>
+
+        <div class="p-5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+          <div class="w-9 h-9 flex items-center justify-center rounded bg-brandPurple/10 text-brandPurple mb-4">
+            <i class="fa-solid fa-palette text-sm"></i>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Canva &amp; Visual Assets</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Custom banners, social media graphics, and editable Canva templates designed for effortless ongoing updates.</p>
+        </div>
+
+        <div class="p-5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+          <div class="w-9 h-9 flex items-center justify-center rounded bg-brandPurple/10 text-brandPurple mb-4">
+            <i class="fa-solid fa-shapes text-sm"></i>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Brand Identity Guidelines</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Cohesive typography selection, color palette definition, and usage rules to keep your visual identity consistent.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-12 px-4 max-w-5xl mx-auto border-t border-slate-200 dark:border-slate-800">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Portfolio Showcase</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Selected branding and graphic design work.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-md text-xs">
+          <button class="filter-btn px-3 py-1.5 font-medium rounded bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs" data-filter="all">All</button>
+          <button class="filter-btn px-3 py-1.5 font-medium rounded text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" data-filter="logos">Logos</button>
+          <button class="filter-btn px-3 py-1.5 font-medium rounded text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" data-filter="branding">Branding</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolioGrid">
+        <div class="portfolio-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden cursor-pointer group" data-category="logos" onclick="openModal('GR Butterfly Emblem', 'Logos', 'https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png')">
+          <div class="aspect-video bg-slate-100 dark:bg-slate-800 overflow-hidden">
+            <img src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" alt="GR Butterfly Emblem" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" />
+          </div>
+          <div class="p-4">
+            <span class="text-[10px] font-semibold tracking-wider text-brandPurple uppercase">Logo Design</span>
+            <h3 class="font-semibold text-slate-900 dark:text-white text-sm mt-0.5">GR Butterfly Emblem</h3>
+          </div>
+        </div>
+
+        <div class="portfolio-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden cursor-pointer group" data-category="branding" onclick="openModal('Minimal Identity Concept', 'Branding', 'https://placehold.co/800x600/f8fafc/6b4cff?text=Brand+Identity+Concept')">
+          <div class="aspect-video bg-slate-100 dark:bg-slate-800 overflow-hidden">
+            <img src="https://placehold.co/600x400/f8fafc/6b4cff?text=Brand+Identity+Concept" alt="Brand Concept" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" />
+          </div>
+          <div class="p-4">
+            <span class="text-[10px] font-semibold tracking-wider text-brandPurple uppercase">Branding</span>
+            <h3 class="font-semibold text-slate-900 dark:text-white text-sm mt-0.5">Minimal Identity System</h3>
+          </div>
+        </div>
+
+        <div class="portfolio-item bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden cursor-pointer group" data-category="branding" onclick="openModal('Social Media Kit', 'Branding', 'https://placehold.co/800x600/f8fafc/0f172a?text=Social+Media+Kit')">
+          <div class="aspect-video bg-slate-100 dark:bg-slate-800 overflow-hidden">
+            <img src="https://placehold.co/600x400/f8fafc/0f172a?text=Social+Media+Kit" alt="Social Media Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" />
+          </div>
+          <div class="p-4">
+            <span class="text-[10px] font-semibold tracking-wider text-brandPurple uppercase">Canva Assets</span>
+            <h3 class="font-semibold text-slate-900 dark:text-white text-sm mt-0.5">Social Media Asset Pack</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-12 px-4 max-w-5xl mx-auto border-t border-slate-200 dark:border-slate-800">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">About GR Designs</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            I create custom logos and creative designs to give your project, brand, or community a professional identity. Whether you are launching a new business or need visual assets, I can help.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandPurple"></i> Experience in graphic design, Canva, and visual identity solutions.</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandPurple"></i> Fast delivery and seamless communication from start to finish.</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandPurple"></i> Clear, reliable updates throughout the process.</li>
+          </ul>
+          <a href="https://www.upwork.com/freelancers/~013a01c9b21c20f5fe" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-md transition-colors">
+            <i class="fa-solid fa-briefcase"></i> Visit My Upwork Profile
+          </a>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-lg border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold text-slate-900 dark:text-white text-sm mb-3">Why Work Together?</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+            Good communication is essential to me; let's stay in touch. I make sure every requirement is fully addressed so you receive assets ready for deployment.
+          </p>
+          <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded border border-slate-100 dark:border-slate-800">
+            <span class="block text-xs font-semibold text-slate-700 dark:text-slate-200">Direct Email Contact:</span>
+            <span class="text-xs text-brandPurple">grdesignscustomer@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-12 px-4 max-w-2xl mx-auto border-t border-slate-200 dark:border-slate-800">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Get In Touch</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Send your project details directly to grdesignscustomer@gmail.com.</p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900 p-6 rounded-lg border border-slate-200 dark:border-slate-800">
+        <!-- Direct submission to Formspree for designsgrcustomers@gmail.com -->
+        <form action="https://formspree.io/f/xjyggowv" method="POST" id="contactForm" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+            <input type="text" name="name" required placeholder="Name" class="w-full px-3 py-2 text-sm rounded bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-brandPurple" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+            <input type="email" name="email" required placeholder="email@example.com" class="w-full px-3 py-2 text-sm rounded bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-brandPurple" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Project Message</label>
+            <textarea name="message" rows="4" required placeholder="Describe your project, deadlines, and deliverables..." class="w-full px-3 py-2 text-sm rounded bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-brandPurple"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 text-xs font-semibold text-white bg-brandPurple hover:bg-brandGlow rounded transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Send Email
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-6 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p>&copy; 2026 GR Designs. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="https://www.upwork.com/freelancers/~013a01c9b21c20f5fe" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 transition-colors">Upwork</a>
+        <a href="mailto:grdesignscustomer@gmail.com" class="hover:text-brandPurple transition-colors">grdesignscustomer@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Portfolio Lightbox Modal -->
+  <div id="modal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 dark:hover:text-white p-1">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <img id="modalImg" src="" alt="Project Preview" class="w-full max-h-[60vh] object-contain bg-slate-100 dark:bg-slate-800" />
+      <div class="p-4">
+        <span id="modalCategory" class="text-[10px] font-semibold uppercase text-brandPurple">Category</span>
+        <h3 id="modalTitle" class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Project Title</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme Switcher Logic
+    const themeSelect = document.getElementById('themeSelect');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        htmlEl.classList.add('dark');
+        htmlEl.classList.remove('light');
+      } else if (theme === 'light') {
+        htmlEl.classList.add('light');
+        htmlEl.classList.remove('dark');
+      } else {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          htmlEl.classList.add('dark');
+        } else {
+          htmlEl.classList.remove('dark');
         }
+      }
+    }
 
-        function setThemeMode(mode) {
-            currentTheme = mode;
-            localStorage.setItem('gr_theme', mode);
-            applyTheme(mode);
-            toggleThemeDropdown(false);
-        }
+    themeSelect.addEventListener('change', (e) => {
+      const selected = e.target.value;
+      localStorage.setItem('theme', selected);
+      applyTheme(selected);
+    });
 
-        // Toggle Theme Dropdown menu
-        const themeDropdownBtn = document.getElementById('theme-dropdown-btn');
-        const themeMenu = document.getElementById('theme-menu');
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    themeSelect.value = savedTheme;
+    applyTheme(savedTheme);
 
-        function toggleThemeDropdown(show) {
-            if (show === undefined) {
-                themeMenu.classList.toggle('hidden');
-            } else if (show) {
-                themeMenu.classList.remove('hidden');
-            } else {
-                themeMenu.classList.add('hidden');
-            }
-        }
+    // Left Navigation Drawer Toggle
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const drawer = document.getElementById('drawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerLinks = document.querySelectorAll('.drawer-link');
 
-        themeDropdownBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleThemeDropdown();
+    function openDrawer() {
+      drawer.classList.remove('-translate-x-full');
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeDrawer() {
+      drawer.classList.add('-translate-x-full');
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    menuToggleBtn.addEventListener('click', openDrawer);
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+    drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+    // Portfolio Category Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-white', 'dark:bg-slate-700', 'text-slate-900', 'dark:text-white', 'shadow-xs');
+          b.classList.add('text-slate-600', 'dark:text-slate-400');
         });
 
-        document.addEventListener('click', () => {
-            toggleThemeDropdown(false);
+        btn.classList.add('bg-white', 'dark:bg-slate-700', 'text-slate-900', 'dark:text-white', 'shadow-xs');
+        btn.classList.remove('text-slate-600', 'dark:text-slate-400');
+
+        const filter = btn.getAttribute('data-filter');
+        portfolioItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
         });
+      });
+    });
 
-        // System Mode Listener for dynamic system updates
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-            if (currentTheme === 'system') {
-                applyTheme('system');
-            }
-        });
+    // Lightbox Modal Functions
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCategory = document.getElementById('modalCategory');
 
-        // Apply theme initial
-        applyTheme(currentTheme);
+    function openModal(title, category, imgSrc) {
+      modalTitle.textContent = title;
+      modalCategory.textContent = category;
+      modalImg.src = imgSrc;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
 
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
 
-        /* --- LEFT DRAWER MENU LOGIC --- */
-        const menuToggleBtn = document.getElementById('menu-toggle');
-        const drawerCloseBtn = document.getElementById('drawer-close');
-        const drawerOverlay = document.getElementById('drawer-overlay');
-        const drawerPanel = document.getElementById('drawer-panel');
-        const drawerLinks = document.querySelectorAll('.drawer-link');
-
-        function openDrawer() {
-            drawerOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                drawerOverlay.classList.remove('opacity-0');
-                drawerPanel.classList.remove('-translate-x-full');
-            }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDrawer() {
-            drawerPanel.classList.add('-translate-x-full');
-            drawerOverlay.classList.add('opacity-0');
-            setTimeout(() => {
-                drawerOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 300);
-        }
-
-        menuToggleBtn.addEventListener('click', openDrawer);
-        drawerCloseBtn.addEventListener('click', closeDrawer);
-        drawerOverlay.addEventListener('click', closeDrawer);
-
-        drawerLinks.forEach(link => {
-            link.addEventListener('click', closeDrawer);
-        });
-
-
-        /* --- PORTFOLIO FILTER LOGIC --- */
-        function filterPortfolio(category) {
-            const cards = document.querySelectorAll('.portfolio-card');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-
-            // Toggle active styling
-            filterBtns.forEach(btn => {
-                if (btn.getAttribute('data-filter') === category) {
-                    btn.className = 'filter-btn active px-3 py-1.5 rounded border border-zinc-900 bg-zinc-900 text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 transition-colors';
-                } else {
-                    btn.className = 'filter-btn px-3 py-1.5 rounded border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors';
-                }
-            });
-
-            // Filter items
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-
-        /* --- PREVIEW MODAL LOGIC --- */
-        const modal = document.getElementById('image-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDesc = document.getElementById('modal-desc');
-        const modalImage = document.getElementById('modal-image');
-        const modalCategory = document.getElementById('modal-category');
-
-        function openModal(title, desc, imgSrc, category) {
-            modalTitle.textContent = title;
-            modalDesc.textContent = desc;
-            modalImage.src = imgSrc;
-            modalCategory.textContent = category;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-
-        /* --- CONTACT FORM HANDLER --- */
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const alertBox = document.getElementById('contact-alert');
-            const submitBtn = document.getElementById('submit-btn');
-
-            // Indicate state change
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<span>Sending...</span>`;
-
-            setTimeout(() => {
-                alertBox.classList.remove('hidden');
-                document.getElementById('contact-form').reset();
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i data-lucide="send" class="w-3.5 h-3.5"></i><span>Send Message</span>`;
-                lucide.createIcons();
-                alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 600);
-        }
-    </script>
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
 </body>
 </html>
-```
