@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GR Designs</title>
+  <title>GR — Custom Logo & Graphic Design</title>
 
-  <!-- Favicon setup with customized Butterfly SVG logo -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23b993ff'/><stop offset='100%' stop-color='%236b4cff'/></linearGradient></defs><path d='M50,50 Q20,10 10,40 Q5,70 45,55 Q10,80 30,95 Q50,70 50,50 Z' fill='url(%23grad)'/><path d='M50,50 Q80,10 90,40 Q95,70 55,55 Q90,80 70,95 Q50,70 50,50 Z' fill='url(%23grad)'/><circle cx='50' cy='50' r='4' fill='%23ffffff'/></svg>" />
+  <!-- Clean Butterfly Favicon (No background box) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23b993ff'/><stop offset='100%' stop-color='%236b4cff'/></linearGradient></defs><path d='M50,50 Q20,10 10,40 Q5,70 45,55 Q10,80 30,95 Q50,70 50,50 Z' fill='url(%23g)'/><path d='M50,50 Q80,10 90,40 Q95,70 55,55 Q90,80 70,95 Q50,70 50,50 Z' fill='url(%23g)'/><circle cx='50' cy='50' r='3.5' fill='%23ffffff'/></svg>" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,8 +25,8 @@
       theme: {
         extend: {
           colors: {
-            brandDark: '#120824',
-            brandCard: 'rgba(31, 16, 58, 0.65)',
+            brandDark: '#0f071a',
+            brandCard: 'rgba(28, 14, 52, 0.5)',
             brandPurple: '#6b4cff',
             brandGlow: '#b993ff',
             brandPink: '#e082ff'
@@ -46,54 +47,54 @@
       overflow-x: hidden;
     }
 
-    /* Halftone dot pattern background */
-    .bg-halftone {
-      background-image: radial-gradient(rgba(185, 147, 255, 0.15) 1px, transparent 1px);
-      background-size: 24px 24px;
+    /* Soft ambient background radial gradient */
+    .bg-grid {
+      background-image: radial-gradient(rgba(185, 147, 255, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
 
-    /* Radial Glowing Orbs */
+    /* Ambient Glow Orbs */
     .glow-orb-1 {
       position: absolute;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(107, 76, 255, 0.35) 0%, rgba(18, 8, 36, 0) 70%);
+      background: radial-gradient(circle, rgba(107, 76, 255, 0.22) 0%, rgba(15, 7, 26, 0) 70%);
       border-radius: 50%;
       pointer-events: none;
     }
 
     .glow-orb-2 {
       position: absolute;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(224, 130, 255, 0.25) 0%, rgba(18, 8, 36, 0) 70%);
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(224, 130, 255, 0.15) 0%, rgba(15, 7, 26, 0) 70%);
       border-radius: 50%;
       pointer-events: none;
     }
 
-    /* Glassmorphism Effect */
+    /* Glassmorphism Styles */
     .glass-panel {
-      background: rgba(28, 14, 52, 0.6);
+      background: rgba(22, 11, 40, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(185, 147, 255, 0.15);
+      border: 1px solid rgba(185, 147, 255, 0.12);
     }
 
     .glass-card {
-      background: rgba(35, 18, 66, 0.5);
+      background: rgba(28, 14, 52, 0.5);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(185, 147, 255, 0.12);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(185, 147, 255, 0.1);
+      transition: all 0.25s ease-out;
     }
 
     .glass-card:hover {
-      border-color: rgba(185, 147, 255, 0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px -10px rgba(107, 76, 255, 0.3);
+      border-color: rgba(185, 147, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -10px rgba(107, 76, 255, 0.25);
     }
 
-    /* Smooth Scrollbar */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -101,7 +102,7 @@
       background: #0f071a;
     }
     ::-webkit-scrollbar-thumb {
-      background: #341a60;
+      background: #2c1550;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
@@ -109,365 +110,340 @@
     }
   </style>
 </head>
-<body class="bg-halftone relative min-h-screen">
+<body class="bg-grid relative min-h-screen antialiased text-gray-100">
 
-  <!-- Ambient background glow elements -->
+  <!-- Ambient glow overlays -->
   <div class="glow-orb-1 top-0 left-1/2 -translate-x-1/2 -z-10"></div>
-  <div class="glow-orb-2 top-[30%] -left-20 -z-10"></div>
-  <div class="glow-orb-1 top-[60%] -right-20 -z-10"></div>
+  <div class="glow-orb-2 top-[35%] -left-20 -z-10"></div>
+  <div class="glow-orb-1 top-[65%] -right-20 -z-10"></div>
 
-  <!-- Top Navigation Header -->
+  <!-- Header Navigation -->
   <header class="fixed top-0 left-0 right-0 z-40 glass-panel px-4 py-3 md:px-8 border-b border-white/10">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Left side: Toggle Button & Logo -->
+      <!-- Left side: Hamburger Toggle & Logo Image -->
       <div class="flex items-center gap-4">
-        <button id="menuToggleBtn" aria-label="Toggle Navigation Menu" class="p-2.5 rounded-xl text-brandGlow hover:text-white hover:bg-white/10 transition-colors focus:outline-none">
+        <button id="menuToggleBtn" aria-label="Open Navigation Menu" class="p-2 rounded-xl text-brandGlow hover:text-white hover:bg-white/10 transition-colors focus:outline-none">
           <i class="fa-solid fa-bars text-2xl"></i>
         </button>
 
-        <a href="#home" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brandPurple to-brandGlow p-0.5 shadow-lg shadow-brandPurple/30 group-hover:scale-105 transition-transform">
-            <div class="w-full h-full bg-brandDark rounded-[10px] flex items-center justify-center">
-              <svg class="w-6 h-6 text-brandGlow" viewBox="0 0 100 100" fill="currentColor">
-                <path d="M50,50 Q20,10 10,40 Q5,70 45,55 Q10,80 30,95 Q50,70 50,50 Z"/>
-                <path d="M50,50 Q80,10 90,40 Q95,70 55,55 Q90,80 70,95 Q50,70 50,50 Z"/>
-              </svg>
-            </div>
-          </div>
-          <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-brandGlow to-brandPink bg-clip-text text-transparent">
-            GR DESIGNS
-          </span>
+        <a href="#home" class="flex items-center gap-3">
+          <img 
+            src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" 
+            alt="GR Designs Logo" 
+            class="h-10 md:h-12 w-auto object-contain"
+            onerror="this.onerror=null; this.src='https://placehold.co/180x60/0f071a/b993ff?text=GR+DESIGNS';"
+          />
         </a>
       </div>
 
-      <!-- Right side CTA -->
-      <a href="#contact" class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brandPurple to-brandGlow text-white font-medium hover:opacity-90 transition-opacity shadow-lg shadow-brandPurple/25 text-sm">
-        <i class="fa-solid fa-paper-plane text-xs"></i> Get in Touch
+      <!-- Right side Call to Action -->
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brandPurple to-brandGlow text-white font-medium hover:opacity-90 transition-opacity text-sm shadow-md shadow-brandPurple/20">
+        <i class="fa-regular fa-paper-plane text-xs"></i> Contact Me
       </a>
     </div>
   </header>
 
-  <!-- Slide-out Sidebar Overlay -->
+  <!-- Sidebar Overlay -->
   <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
-  <!-- Left Collapsible Sidebar -->
-  <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 max-w-[85vw] glass-panel z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 border-r border-white/10 shadow-2xl">
+  <!-- Slide-out Left Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 max-w-[85vw] glass-panel z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 shadow-2xl">
     <div>
-      <!-- Header inside Sidebar -->
       <div class="flex items-center justify-between pb-6 border-b border-white/10">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brandPurple to-brandGlow flex items-center justify-center text-white font-bold text-lg">
-            GR
-          </div>
-          <div>
-            <h2 class="font-bold text-white leading-none">GR Designs</h2>
-            <span class="text-xs text-brandGlow/80">Creative Studio</span>
-          </div>
-        </div>
-        <button id="closeSidebarBtn" class="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
+        <img 
+          src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" 
+          alt="GR Designs Logo" 
+          class="h-10 w-auto object-contain"
+          onerror="this.onerror=null; this.src='https://placehold.co/160x50/0f071a/b993ff?text=GR+DESIGNS';"
+        />
+        <button id="closeSidebarBtn" aria-label="Close Navigation Menu" class="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
           <i class="fa-solid fa-xmark text-xl"></i>
         </button>
       </div>
 
-      <!-- Navigation Links -->
-      <nav class="mt-8 space-y-2">
-        <a href="#home" class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
+      <!-- Menu Items -->
+      <nav class="mt-8 space-y-1.5">
+        <a href="#home" class="sidebar-link flex items-center gap-3.5 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
           <i class="fa-solid fa-house w-5 text-brandGlow"></i>
-          <span class="font-medium">Home / Main</span>
+          <span class="font-medium text-sm">Main</span>
         </a>
-        <a href="#services" class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
-          <i class="fa-solid fa-wand-magic-sparkles w-5 text-brandGlow"></i>
-          <span class="font-medium">What I Do / Services</span>
+        <a href="#designs" class="sidebar-link flex items-center gap-3.5 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
+          <i class="fa-solid fa-grid-2 w-5 text-brandGlow"></i>
+          <span class="font-medium text-sm">Portfolio</span>
         </a>
-        <a href="#designs" class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
-          <i class="fa-solid fa-border-all w-5 text-brandGlow"></i>
-          <span class="font-medium">My Designs / Portfolio</span>
+        <a href="#services" class="sidebar-link flex items-center gap-3.5 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
+          <i class="fa-solid fa-compass-drafting w-5 text-brandGlow"></i>
+          <span class="font-medium text-sm">Services</span>
         </a>
-        <a href="#about" class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
-          <i class="fa-solid fa-user-astronaut w-5 text-brandGlow"></i>
-          <span class="font-medium">About Me / Info</span>
+        <a href="#about" class="sidebar-link flex items-center gap-3.5 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
+          <i class="fa-solid fa-user-check w-5 text-brandGlow"></i>
+          <span class="font-medium text-sm">About</span>
         </a>
-        <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all group">
+        <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" class="sidebar-link flex items-center gap-3.5 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all group">
           <i class="fa-solid fa-briefcase w-5 text-brandGlow"></i>
-          <span class="font-medium flex-1">Upwork Profile</span>
+          <span class="font-medium text-sm flex-1">Upwork Profile</span>
           <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 group-hover:text-brandGlow"></i>
         </a>
-        <a href="#contact" class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
+        <a href="#contact" class="sidebar-link flex items-center gap-3.5 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-brandPurple/20 hover:border-l-4 hover:border-brandGlow transition-all">
           <i class="fa-solid fa-envelope w-5 text-brandGlow"></i>
-          <span class="font-medium">Contact Me</span>
+          <span class="font-medium text-sm">Contact</span>
         </a>
       </nav>
     </div>
 
-    <!-- Sidebar Footer Social Icons -->
+    <!-- Sidebar Footer -->
     <div class="pt-6 border-t border-white/10">
-      <p class="text-xs text-gray-400 mb-3">Follow My Work</p>
+      <p class="text-xs text-gray-400 mb-3">Direct Connect</p>
       <div class="flex items-center gap-3 text-gray-300">
-        <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-brandPurple hover:text-white transition-colors">
-          <i class="fa-brands fa-instagram"></i>
+        <a href="#contact" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brandPurple hover:text-white transition-colors">
+          <i class="fa-solid fa-envelope"></i>
         </a>
-        <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-brandPurple hover:text-white transition-colors">
-          <i class="fa-brands fa-behance"></i>
-        </a>
-        <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-brandPurple hover:text-white transition-colors">
-          <i class="fa-brands fa-dribbble"></i>
+        <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brandPurple hover:text-white transition-colors">
+          <i class="fa-solid fa-upwork"></i>
         </a>
       </div>
     </div>
   </aside>
 
-  <!-- Hero / Principal Banner Section -->
-  <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center relative">
+  <!-- Hero Section -->
+  <section id="home" class="pt-36 pb-20 md:pt-44 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col items-center text-center relative">
     
-    <!-- Butterfly Logo Emblem -->
-    <div class="relative mb-6 group">
-      <div class="absolute -inset-4 bg-gradient-to-r from-brandPurple via-brandPink to-brandGlow rounded-full blur-xl opacity-60 group-hover:opacity-100 transition duration-500"></div>
-      <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-3xl glass-card flex items-center justify-center p-4 border border-brandGlow/30 shadow-2xl">
-        <svg class="w-20 h-20 md:w-24 md:h-24 text-brandGlow drop-shadow-[0_0_15px_rgba(185,147,255,0.6)]" viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50,50 Q20,10 10,40 Q5,70 45,55 Q10,80 30,95 Q50,70 50,50 Z"/>
-          <path d="M50,50 Q80,10 90,40 Q95,70 55,55 Q90,80 70,95 Q50,70 50,50 Z"/>
-          <circle cx="50" cy="50" r="4" fill="#ffffff"/>
-        </svg>
+    <!-- Main Logo Display -->
+    <div class="mb-8 relative max-w-xs md:max-w-md w-full">
+      <div class="absolute -inset-2 bg-gradient-to-r from-brandPurple to-brandPink rounded-3xl blur-2xl opacity-30"></div>
+      <div class="relative glass-card p-6 md:p-8 rounded-3xl border border-brandGlow/20 flex items-center justify-center">
+        <img 
+          src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" 
+          alt="GR Designs Main Logo" 
+          class="w-full h-auto object-contain max-h-44"
+          onerror="this.onerror=null; this.src='https://placehold.co/400x150/0f071a/b993ff?text=GR+DESIGNS';"
+        />
       </div>
     </div>
 
-    <!-- Title & Tagline -->
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4">
-      <span class="block text-white">Creative Identity Studio</span>
-      <span class="bg-gradient-to-r from-brandGlow via-brandPink to-brandPurple bg-clip-text text-transparent">GR DESIGNS</span>
+    <!-- Heading & Intro -->
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight text-white">
+      Custom Logos &amp; Visual Identity Design
     </h1>
 
-    <p class="text-lg md:text-2xl text-gray-300 max-w-2xl font-light mb-8">
-      Custom Logos &amp; Creative Visual Identities
+    <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl font-normal mb-8 leading-relaxed">
+      I craft clean, memorable logos and brand graphics that help businesses look professional and stand out.
     </p>
 
+    <!-- CTAs -->
     <div class="flex flex-wrap items-center justify-center gap-4">
-      <a href="#designs" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-brandPurple to-brandGlow text-white font-semibold hover:scale-105 transition-transform shadow-lg shadow-brandPurple/30 flex items-center gap-2">
-        <i class="fa-solid fa-eye"></i> View My Work
+      <a href="#designs" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-brandPurple to-brandGlow text-white font-semibold hover:opacity-95 transition-all shadow-lg shadow-brandPurple/25 flex items-center gap-2">
+        <i class="fa-solid fa-eye text-sm"></i> View Portfolio
       </a>
       <a href="#contact" class="px-7 py-3.5 rounded-xl glass-card text-white font-semibold hover:bg-white/10 transition-colors border border-brandGlow/20">
-        Let's Collaborate
+        Start a Project
       </a>
     </div>
   </section>
 
-  <!-- What I Do / Services Section -->
-  <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
-    <div class="text-center mb-16">
-      <span class="text-brandGlow uppercase tracking-widest text-xs font-semibold px-3 py-1 rounded-full bg-brandPurple/20 border border-brandGlow/20">Capabilities</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">What I Do</h2>
-      <p class="text-gray-400 mt-2 max-w-xl mx-auto">Tailored design solutions crafted to make your brand stand out with memorable visual aesthetics.</p>
+  <!-- Portfolio / My Work Section -->
+  <section id="designs" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-white">Selected Works</h2>
+      <p class="text-gray-400 text-sm md:text-base mt-2">A quick look at recent brand identity and graphic design projects.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+      <button class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-brandPurple text-white shadow transition-all" data-filter="all">All</button>
+      <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium glass-card text-gray-300 hover:text-white transition-all" data-filter="logos">Logos</button>
+      <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium glass-card text-gray-300 hover:text-white transition-all" data-filter="branding">Branding</button>
+      <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium glass-card text-gray-300 hover:text-white transition-all" data-filter="graphics">Digital Assets</button>
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+      
+      <!-- Card 1 -->
+      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="logos" onclick="openLightbox('Butterfly Emblem Concept', 'Logo Design', 'https://placehold.co/800x600/1a0b30/b993ff?text=Butterfly+Logo+Concept')">
+        <div class="relative overflow-hidden aspect-video">
+          <img src="https://placehold.co/600x400/1a0b30/b993ff?text=Butterfly+Logo+Concept" alt="Butterfly Logo Concept" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <span class="absolute top-3 left-3 bg-brandPurple/90 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Logo</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-white text-base group-hover:text-brandGlow transition-colors">Butterfly Icon &amp; Mark</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Vector icon mark created for a modern graphic design agency.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="branding" onclick="openLightbox('Modern Brand Identity Package', 'Branding', 'https://placehold.co/800x600/210e3d/e082ff?text=Brand+Identity+Guide')">
+        <div class="relative overflow-hidden aspect-video">
+          <img src="https://placehold.co/600x400/210e3d/e082ff?text=Brand+Identity+Guide" alt="Brand Identity Guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <span class="absolute top-3 left-3 bg-brandPurple/90 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Branding</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-white text-base group-hover:text-brandGlow transition-colors">Studio Visual Identity</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Color palette selection, typography, and logo usage guidelines.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="graphics" onclick="openLightbox('Social Media Promo Set', 'Digital Assets', 'https://placehold.co/800x600/150828/ffffff?text=Social+Media+Templates')">
+        <div class="relative overflow-hidden aspect-video">
+          <img src="https://placehold.co/600x400/150828/ffffff?text=Social+Media+Templates" alt="Social Media Templates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <span class="absolute top-3 left-3 bg-brandPurple/90 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Digital Assets</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-white text-base group-hover:text-brandGlow transition-colors">Social Post Templates</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Custom editable templates designed for Instagram and LinkedIn.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="logos" onclick="openLightbox('Minimal Monogram Design', 'Logo Design', 'https://placehold.co/800x600/1d0a36/b993ff?text=Monogram+Mark')">
+        <div class="relative overflow-hidden aspect-video">
+          <img src="https://placehold.co/600x400/1d0a36/b993ff?text=Monogram+Mark" alt="Monogram Mark" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <span class="absolute top-3 left-3 bg-brandPurple/90 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Logo</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-white text-base group-hover:text-brandGlow transition-colors">Minimal Monogram</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Sleek initials emblem crafted for personal branding.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="branding" onclick="openLightbox('Stationery & Business Cards', 'Branding', 'https://placehold.co/800x600/271247/e082ff?text=Stationery+Mockup')">
+        <div class="relative overflow-hidden aspect-video">
+          <img src="https://placehold.co/600x400/271247/e082ff?text=Stationery+Mockup" alt="Stationery Mockup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <span class="absolute top-3 left-3 bg-brandPurple/90 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Branding</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-white text-base group-hover:text-brandGlow transition-colors">Business Stationery Set</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Print-ready business cards, letterheads, and envelope mockups.</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="graphics" onclick="openLightbox('Header & Banner Designs', 'Digital Assets', 'https://placehold.co/800x600/130623/b993ff?text=Banner+Graphics')">
+        <div class="relative overflow-hidden aspect-video">
+          <img src="https://placehold.co/600x400/130623/b993ff?text=Banner+Graphics" alt="Banner Graphics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <span class="absolute top-3 left-3 bg-brandPurple/90 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Digital Assets</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold text-white text-base group-hover:text-brandGlow transition-colors">Channel &amp; Banner Graphics</h3>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Clean header graphics customized for YouTube and web headers.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-white">Services</h2>
+      <p class="text-gray-400 text-sm md:text-base mt-2">Core design services built to support your visual presence.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Service 1 -->
+      
       <div class="glass-card p-6 rounded-2xl flex flex-col items-start">
-        <div class="w-12 h-12 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-xl mb-5">
+        <div class="w-11 h-11 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-lg mb-4">
           <i class="fa-solid fa-pen-nib"></i>
         </div>
-        <h3 class="text-xl font-bold text-white mb-2">Custom Logos</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Unique, modern, and scalable logo concepts designed to capture your brand's essence and leave a lasting impression.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Logo Design</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Versatile, original logo marks tailored carefully to represent your brand across print and web.</p>
       </div>
 
-      <!-- Service 2 -->
       <div class="glass-card p-6 rounded-2xl flex flex-col items-start">
-        <div class="w-12 h-12 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-xl mb-5">
-          <i class="fa-solid fa-layer-group"></i>
+        <div class="w-11 h-11 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-lg mb-4">
+          <i class="fa-solid fa-swatchbook"></i>
         </div>
-        <h3 class="text-xl font-bold text-white mb-2">Visual Identities</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Complete brand style guides including color palettes, typography rules, and cohesive graphic elements.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Brand Guidelines</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Cohesive style guides defining color codes, fonts, and rules to keep your look consistent everywhere.</p>
       </div>
 
-      <!-- Service 3 -->
       <div class="glass-card p-6 rounded-2xl flex flex-col items-start">
-        <div class="w-12 h-12 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-xl mb-5">
-          <i class="fa-solid fa-palette"></i>
+        <div class="w-11 h-11 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-lg mb-4">
+          <i class="fa-solid fa-image"></i>
         </div>
-        <h3 class="text-xl font-bold text-white mb-2">Creative Assets</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">High-converting social media templates, Canva graphics, banners, flyers, and digital marketing materials.</p>
+        <h3 class="text-lg font-bold text-white mb-2">Social Graphics</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">High-quality post templates, banners, and digital graphics made for modern social platforms.</p>
       </div>
 
-      <!-- Service 4 -->
       <div class="glass-card p-6 rounded-2xl flex flex-col items-start">
-        <div class="w-12 h-12 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-xl mb-5">
+        <div class="w-11 h-11 rounded-xl bg-brandPurple/20 border border-brandGlow/30 flex items-center justify-center text-brandGlow text-lg mb-4">
           <i class="fa-solid fa-vector-square"></i>
         </div>
-        <h3 class="text-xl font-bold text-white mb-2">Vector Art &amp; Layouts</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Clean, precise vector illustrations and print-ready layouts tailored to your exact specifications.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- My Designs / Portfolio Grid -->
-  <section id="designs" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
-    <div class="text-center mb-10">
-      <span class="text-brandGlow uppercase tracking-widest text-xs font-semibold px-3 py-1 rounded-full bg-brandPurple/20 border border-brandGlow/20">Showcase</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">My Designs</h2>
-      <p class="text-gray-400 mt-2">Explore recent graphic design projects and visual identities.</p>
-    </div>
-
-    <!-- Portfolio Category Filter Tabs -->
-    <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
-      <button class="filter-btn active px-5 py-2 rounded-xl text-sm font-medium bg-brandPurple text-white shadow-md transition-all" data-filter="all">All Projects</button>
-      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-medium glass-card text-gray-300 hover:text-white transition-all" data-filter="logos">Logos</button>
-      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-medium glass-card text-gray-300 hover:text-white transition-all" data-filter="branding">Branding</button>
-      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-medium glass-card text-gray-300 hover:text-white transition-all" data-filter="social">Social Media</button>
-    </div>
-
-    <!-- Portfolio Grid Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
-      
-      <!-- Item 1 -->
-      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="logos" onclick="openLightbox('Neon Butterfly Icon', 'Logos', 'https://placehold.co/800x600/1e0e38/b993ff?text=GR+Logo+Concept')">
-        <div class="relative overflow-hidden aspect-video">
-          <img src="https://placehold.co/600x400/1e0e38/b993ff?text=GR+Logo+Concept" alt="GR Logo Concept" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-60"></div>
-          <span class="absolute top-3 left-3 bg-brandPurple/80 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Logo Design</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-bold text-white text-lg group-hover:text-brandGlow transition-colors">Neon Butterfly Emblem</h3>
-          <p class="text-gray-400 text-sm mt-1">Sleek glowing badge branding for tech creative studio.</p>
-        </div>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="branding" onclick="openLightbox('Aether Brand Identity', 'Branding', 'https://placehold.co/800x600/251047/e082ff?text=Aether+Brand+Guide')">
-        <div class="relative overflow-hidden aspect-video">
-          <img src="https://placehold.co/600x400/251047/e082ff?text=Aether+Brand+Guide" alt="Aether Brand Guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-60"></div>
-          <span class="absolute top-3 left-3 bg-brandPurple/80 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Branding</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-bold text-white text-lg group-hover:text-brandGlow transition-colors">Aether Studio Identity</h3>
-          <p class="text-gray-400 text-sm mt-1">Full brand identity system with dark mode guidelines.</p>
-        </div>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="social" onclick="openLightbox('Cyberpunk Social Pack', 'Social Media', 'https://placehold.co/800x600/180a30/ffffff?text=Social+Media+Kit')">
-        <div class="relative overflow-hidden aspect-video">
-          <img src="https://placehold.co/600x400/180a30/ffffff?text=Social+Media+Kit" alt="Social Media Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-60"></div>
-          <span class="absolute top-3 left-3 bg-brandPurple/80 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Social Media</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-bold text-white text-lg group-hover:text-brandGlow transition-colors">Instagram Promotional Templates</h3>
-          <p class="text-gray-400 text-sm mt-1">Editable Canva layouts tailored for content creators.</p>
-        </div>
-      </div>
-
-      <!-- Item 4 -->
-      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="logos" onclick="openLightbox('Minimal Monogram', 'Logos', 'https://placehold.co/800x600/1f113a/b993ff?text=Monogram+Logo')">
-        <div class="relative overflow-hidden aspect-video">
-          <img src="https://placehold.co/600x400/1f113a/b993ff?text=Monogram+Logo" alt="Monogram Logo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-60"></div>
-          <span class="absolute top-3 left-3 bg-brandPurple/80 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Logo Design</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-bold text-white text-lg group-hover:text-brandGlow transition-colors">Minimal Monogram</h3>
-          <p class="text-gray-400 text-sm mt-1">Luxury typography mark for personal branding.</p>
-        </div>
-      </div>
-
-      <!-- Item 5 -->
-      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="branding" onclick="openLightbox('Stationery Suite', 'Branding', 'https://placehold.co/800x600/2c1252/e082ff?text=Stationery+Mockup')">
-        <div class="relative overflow-hidden aspect-video">
-          <img src="https://placehold.co/600x400/2c1252/e082ff?text=Stationery+Mockup" alt="Stationery Mockup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-60"></div>
-          <span class="absolute top-3 left-3 bg-brandPurple/80 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Branding</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-bold text-white text-lg group-hover:text-brandGlow transition-colors">Corporate Stationery Mockup</h3>
-          <p class="text-gray-400 text-sm mt-1">Business cards, letterheads, and digital assets.</p>
-        </div>
-      </div>
-
-      <!-- Item 6 -->
-      <div class="portfolio-item glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="social" onclick="openLightbox('Banner Artwork', 'Social Media', 'https://placehold.co/800x600/17092c/b993ff?text=Twitch/YouTube+Banner')">
-        <div class="relative overflow-hidden aspect-video">
-          <img src="https://placehold.co/600x400/17092c/b993ff?text=Twitch/YouTube+Banner" alt="Twitch YouTube Banner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-60"></div>
-          <span class="absolute top-3 left-3 bg-brandPurple/80 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-md">Social Media</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-bold text-white text-lg group-hover:text-brandGlow transition-colors">Gaming &amp; Stream Banners</h3>
-          <p class="text-gray-400 text-sm mt-1">Custom YouTube headers &amp; Twitch overlays.</p>
-        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Vector File Prep</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Clean vector conversions and production-ready files (AI, SVG, PDF, PNG) ready for printers.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- About Me / Info Section -->
-  <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <!-- About Section -->
+  <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       
       <div class="relative">
-        <div class="absolute -inset-2 bg-gradient-to-r from-brandPurple to-brandPink rounded-3xl blur-lg opacity-40"></div>
-        <div class="relative glass-card p-8 rounded-3xl border border-brandGlow/20">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brandPurple to-brandGlow flex items-center justify-center text-2xl font-black text-white shadow-lg">
-              GR
-            </div>
-            <div>
-              <h3 class="text-2xl font-bold text-white">GR Designs</h3>
-              <p class="text-brandGlow text-sm">Graphic Designer &amp; Visual Artist</p>
-            </div>
-          </div>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            Hello! I specialize in crafting distinctive logo designs and visual identities that empower brands. My focus is on clean aesthetics, vibrant color harmonies, and effective visual storytelling.
+        <div class="glass-card p-8 rounded-3xl border border-brandGlow/20">
+          <img 
+            src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" 
+            alt="GR Designs Brand Logo" 
+            class="h-16 w-auto object-contain mb-6"
+            onerror="this.onerror=null; this.src='https://placehold.co/200x60/0f071a/b993ff?text=GR+DESIGNS';"
+          />
+          <h3 class="text-xl font-bold text-white mb-3">Hi, I'm the designer behind GR Designs.</h3>
+          <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+            I work directly with business owners and creators to turn ideas into polished visual designs. My focus is straightforward: practical design, clear communication, and delivering files on time.
           </p>
-          <div class="grid grid-cols-2 gap-4 text-center">
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-              <span class="block text-2xl font-bold text-brandGlow">100%</span>
-              <span class="text-xs text-gray-400">Client Satisfaction</span>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+              <span class="block text-xl font-bold text-brandGlow">Vector Quality</span>
+              <span class="text-xs text-gray-400">100% Scalable Assets</span>
             </div>
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-              <span class="block text-2xl font-bold text-brandGlow">Fast</span>
-              <span class="text-xs text-gray-400">Turnaround Time</span>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+              <span class="block text-xl font-bold text-brandGlow">Direct Support</span>
+              <span class="text-xs text-gray-400">Quick Response Time</span>
             </div>
           </div>
         </div>
       </div>
 
       <div>
-        <span class="text-brandGlow uppercase tracking-widest text-xs font-semibold px-3 py-1 rounded-full bg-brandPurple/20 border border-brandGlow/20">Info</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6">Why Work With Me?</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">What to expect working with me</h2>
         
         <ul class="space-y-4">
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-lg bg-brandPurple/30 flex items-center justify-center text-brandGlow flex-shrink-0 mt-1">
-              <i class="fa-solid fa-check text-sm"></i>
+          <li class="flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-brandPurple/30 flex items-center justify-center text-brandGlow flex-shrink-0 mt-0.5 text-xs">
+              <i class="fa-solid fa-check"></i>
             </div>
             <div>
-              <h4 class="font-semibold text-white">Seamless Communication</h4>
-              <p class="text-gray-400 text-sm">Clear, timely responses at every stage of your design journey.</p>
+              <h4 class="font-semibold text-white text-sm sm:text-base">Clear Process</h4>
+              <p class="text-gray-400 text-xs sm:text-sm mt-0.5">We discuss requirements first, review drafts, and refine until everything looks right.</p>
             </div>
           </li>
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-lg bg-brandPurple/30 flex items-center justify-center text-brandGlow flex-shrink-0 mt-1">
-              <i class="fa-solid fa-check text-sm"></i>
+          <li class="flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-brandPurple/30 flex items-center justify-center text-brandGlow flex-shrink-0 mt-0.5 text-xs">
+              <i class="fa-solid fa-check"></i>
             </div>
             <div>
-              <h4 class="font-semibold text-white">Tailored Solutions</h4>
-              <p class="text-gray-400 text-sm">No generic templates—every asset is custom-built for your target audience.</p>
+              <h4 class="font-semibold text-white text-sm sm:text-base">Custom Concepts</h4>
+              <p class="text-gray-400 text-xs sm:text-sm mt-0.5">No stock clip-art templates. Each logo mark is created specifically for your business.</p>
             </div>
           </li>
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-lg bg-brandPurple/30 flex items-center justify-center text-brandGlow flex-shrink-0 mt-1">
-              <i class="fa-solid fa-check text-sm"></i>
+          <li class="flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-brandPurple/30 flex items-center justify-center text-brandGlow flex-shrink-0 mt-0.5 text-xs">
+              <i class="fa-solid fa-check"></i>
             </div>
             <div>
-              <h4 class="font-semibold text-white">Versatile Formats</h4>
-              <p class="text-gray-400 text-sm">Deliverables in high-res vector files (AI, SVG, PDF, PNG, JPG, Canva links).</p>
+              <h4 class="font-semibold text-white text-sm sm:text-base">Complete File Delivery</h4>
+              <p class="text-gray-400 text-xs sm:text-sm mt-0.5">Receive print-ready vector files alongside high-res PNG and web-optimized exports.</p>
             </div>
           </li>
         </ul>
 
         <div class="mt-8">
-          <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-medium hover:opacity-90 transition-opacity">
-            <i class="fa-solid fa-circle-check"></i> Hire Me on Upwork
+          <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-medium hover:opacity-90 transition-opacity text-sm shadow-md">
+            <i class="fa-solid fa-briefcase text-xs"></i> View Upwork Profile
           </a>
         </div>
       </div>
@@ -475,84 +451,84 @@
     </div>
   </section>
 
-  <!-- Contact Me Section -->
-  <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
-    <div class="text-center mb-12">
-      <span class="text-brandGlow uppercase tracking-widest text-xs font-semibold px-3 py-1 rounded-full bg-brandPurple/20 border border-brandGlow/20">Get In Touch</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Let's Create Something Amazing</h2>
-      <p class="text-gray-400 mt-2">Have a project in mind? Send a message and let's start planning.</p>
+  <!-- Contact Form Section -->
+  <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-white">Get in Touch</h2>
+      <p class="text-gray-400 text-sm sm:text-base mt-2">Send a message to discuss your design project.</p>
     </div>
 
-    <div class="max-w-2xl mx-auto glass-card p-8 rounded-3xl border border-brandGlow/20 shadow-2xl">
-      <!-- Success Message Container -->
-      <div id="formSuccessAlert" class="hidden mb-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-sm flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-xl text-emerald-400"></i>
-        <span>Thank you! Your message has been received. I will get back to you shortly.</span>
+    <div class="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-brandGlow/20 shadow-xl">
+      <div id="formSuccessAlert" class="hidden mb-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-lg text-emerald-400"></i>
+        <span>Thank you! Your message has been sent. I will get back to you as soon as possible.</span>
       </div>
 
-      <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+      <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
-          <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brandGlow transition-colors">
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Your Name</label>
+          <input type="text" required placeholder="Name or business" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-brandGlow transition-colors">
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
-          <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brandGlow transition-colors">
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Email Address</label>
+          <input type="email" required placeholder="you@example.com" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-brandGlow transition-colors">
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1">Service Needed</label>
-          <select class="w-full px-4 py-3 rounded-xl bg-[#1d0e37] border border-white/10 text-white focus:outline-none focus:border-brandGlow transition-colors">
-            <option>Custom Logo Design</option>
-            <option>Full Brand Identity</option>
-            <option>Social Media Graphics</option>
-            <option>Other / Custom Project</option>
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Service Needed</label>
+          <select class="w-full px-4 py-2.5 rounded-xl bg-[#1a0c33] border border-white/10 text-white text-sm focus:outline-none focus:border-brandGlow transition-colors">
+            <option>Logo Design</option>
+            <option>Full Brand Guidelines</option>
+            <option>Social Media Assets</option>
+            <option>Vector Redraw / Other</option>
           </select>
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1">Project Details</label>
-          <textarea rows="4" required placeholder="Tell me about your business and goals..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-brandGlow transition-colors"></textarea>
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Project Details</label>
+          <textarea rows="4" required placeholder="Brief description of what you need..." class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-brandGlow transition-colors"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brandPurple to-brandGlow text-white font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-brandPurple/30 flex items-center justify-center gap-2">
-          <i class="fa-solid fa-paper-plane"></i> Send Message
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brandPurple to-brandGlow text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-md shadow-brandPurple/25 flex items-center justify-center gap-2">
+          <i class="fa-regular fa-paper-plane text-xs"></i> Send Message
         </button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-10 border-t border-white/10 text-center text-gray-400 text-sm">
+  <footer class="py-8 border-t border-white/10 text-center text-gray-400 text-xs sm:text-sm">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-md bg-brandPurple flex items-center justify-center text-white text-xs font-bold">GR</div>
-        <span class="text-white font-medium">GR Designs</span>
+        <img 
+          src="https://i.postimg.cc/nhqf6Bs1/GR-DESIGNS-20261006-223450-0000.png" 
+          alt="GR Designs Logo" 
+          class="h-6 w-auto object-contain"
+          onerror="this.onerror=null; this.style.display='none';"
+        />
       </div>
       <p>&copy; 2026 GR Designs. All rights reserved.</p>
-      <div class="flex gap-4">
-        <a href="#home" class="hover:text-brandGlow transition-colors">Back to Top</a>
-      </div>
+      <a href="#home" class="hover:text-brandGlow transition-colors">Back to top</a>
     </div>
   </footer>
 
-  <!-- Lightbox Modal for Portfolio Projects -->
+  <!-- Portfolio Lightbox Modal -->
   <div id="lightboxModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass-panel max-w-3xl w-full rounded-2xl overflow-hidden border border-brandGlow/30 relative">
-      <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+    <div class="glass-panel max-w-2xl w-full rounded-2xl overflow-hidden border border-brandGlow/30 relative">
+      <button onclick="closeLightbox()" aria-label="Close Preview" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <img id="lightboxImg" src="" alt="Portfolio Large Preview" class="w-full max-h-[60vh] object-contain bg-brandDark/50">
-      <div class="p-6">
+      <img id="lightboxImg" src="" alt="Project Preview" class="w-full max-h-[55vh] object-contain bg-brandDark/50">
+      <div class="p-5">
         <span id="lightboxCategory" class="text-xs font-semibold uppercase text-brandGlow px-2.5 py-1 rounded bg-brandPurple/30">Category</span>
-        <h3 id="lightboxTitle" class="text-2xl font-bold text-white mt-2">Project Title</h3>
+        <h3 id="lightboxTitle" class="text-xl font-bold text-white mt-2">Project Title</h3>
       </div>
     </div>
   </div>
 
   <script>
-    // --- Sidebar Toggle Functionality ---
+    // --- Sidebar Menu Logic ---
     const menuToggleBtn = document.getElementById('menuToggleBtn');
     const closeSidebarBtn = document.getElementById('closeSidebarBtn');
     const sidebar = document.getElementById('sidebar');
@@ -581,7 +557,7 @@
       });
     });
 
-    // --- Portfolio Filtering Logic ---
+    // --- Portfolio Category Filter ---
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
@@ -607,7 +583,7 @@
       });
     });
 
-    // --- Lightbox Functions ---
+    // --- Lightbox Modal Logic ---
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxTitle = document.getElementById('lightboxTitle');
@@ -617,7 +593,6 @@
       lightboxTitle.textContent = title;
       lightboxCategory.textContent = category;
       lightboxImg.src = imgSrc;
-
       lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
     }
 
@@ -631,7 +606,7 @@
       }
     });
 
-    // --- Form Submission Handler ---
+    // --- Form Handling ---
     function handleFormSubmit(event) {
       event.preventDefault();
       const alertBox = document.getElementById('formSuccessAlert');
@@ -640,7 +615,7 @@
 
       setTimeout(() => {
         alertBox.classList.add('hidden');
-      }, 6000);
+      }, 5000);
     }
   </script>
 </body>
